@@ -5,7 +5,8 @@
 import {
   defaultFont,
   primaryColor,
-  primaryBoxShadow
+  primaryBoxShadow,
+  infoColor
 } from "assets/jss/material-kit-react.jsx";
 
 const customDropdownStyle = theme => ({
@@ -69,7 +70,7 @@ const customDropdownStyle = theme => ({
   },
   primaryHover: {
     "&:hover": {
-      backgroundColor: primaryColor,
+      backgroundColor: infoColor,
       color: "#FFFFFF",
       ...primaryBoxShadow
     }

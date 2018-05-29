@@ -4,27 +4,29 @@ import classNames from "classnames";
 // material-ui components
 import withStyles from "material-ui/styles/withStyles";
 
-// @material-ui/icons
+import HeaderLinks from "components/Header/HeaderLinks.jsx";
+import landingPageStyle from "assets/jss/material-kit-react/views/landingPage.jsx";
 
-// core components
 import Header from "components/Header/Header.jsx";
 import Footer from "components/Footer/Footer.jsx";
+import buddleLogo from "assets/img/buddle-logo.png";
+import Parallax from "components/Parallax/Parallax.jsx";
+
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 import Button from "components/CustomButtons/Button.jsx";
-import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import Parallax from "components/Parallax/Parallax.jsx";
-
-import landingPageStyle from "assets/jss/material-kit-react/views/landingPage.jsx";
 
 // Sections for this page
 import ProductSection from "./Sections/ProductSection.jsx";
 import TeamSection from "./Sections/TeamSection.jsx";
 import WorkSection from "./Sections/WorkSection.jsx";
 
+
+
 const dashboardRoutes = [];
 
-class LandingPage extends React.Component {
+
+class HomePage extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
     return (
@@ -32,7 +34,7 @@ class LandingPage extends React.Component {
         <Header
           color="transparent"
           routes={dashboardRoutes}
-          brand="Buddle"
+          brand={<img style={{height: 40}} src={buddleLogo} alt='Buddle' /> }
           rightLinks={<HeaderLinks />}
           fixed
           changeColorOnScroll={{
@@ -41,11 +43,11 @@ class LandingPage extends React.Component {
           }}
           {...rest}
         />
-        <Parallax filter image={require("assets/img/landing-bg.jpg")}>
+        <Parallax filter image={require("assets/img/background-team.jpg")}>
           <div className={classes.container}>
             <GridContainer>
               <GridItem xs={12} sm={12} md={6}>
-                <h1 className={classes.title}>Your Story Starts With Us.</h1>
+                <h1 className={classes.title}>Legal Services for your Budding Business</h1>
                 <h4>
                   Every landing page needs a small description after the big
                   bold title, that's why we added this text here. Add here all
@@ -54,29 +56,30 @@ class LandingPage extends React.Component {
                 </h4>
                 <br />
                 <Button
+                  type="button"
                   color="danger"
                   size="lg"
                   href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                   target="_blank"
                   rel="noopener noreferrer"
-                >
-                  <i className="fas fa-play" />Watch video
+                > How Can We Help?
                 </Button>
               </GridItem>
             </GridContainer>
           </div>
         </Parallax>
+
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>
-            <ProductSection />
-            <TeamSection />
-            <WorkSection />
+          <ProductSection
+
+           />
           </div>
         </div>
-        <Footer />
+
       </div>
-    );
+    )
   }
 }
 
-export default withStyles(landingPageStyle)(LandingPage);
+export default withStyles(landingPageStyle)(HomePage)

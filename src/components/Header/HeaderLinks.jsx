@@ -25,7 +25,7 @@ function HeaderLinks({ ...props }) {
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
         <CustomDropdown
-          buttonText="Components"
+          buttonText="Services"
           buttonProps={{
             className: classes.navLink,
             color: "transparent"
@@ -33,28 +33,17 @@ function HeaderLinks({ ...props }) {
           buttonIcon={Apps}
           dropdownList={[
             <Link to="/" className={classes.dropdownLink}>
-              All components
+              Business Formation
+            </Link>,
+            <Link to="/" className={classes.dropdownLink}>
+              Branding
+            </Link>,
+            <Link to="/" className={classes.dropdownLink}>
+              License and Compliance
             </Link>,
             // eslint-disable-next-line
-            <a
-              href="http://creativetimofficial.github.io/material-kit-react/#/documentation"
-              target="_blank"
-              className={classes.dropdownLink}
-            >
-              Documentation
-            </a>
           ]}
         />
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Button
-          href="https://www.creative-tim.com/product/material-kit-react"
-          color="transparent"
-          target="_blank"
-          className={classes.navLink}
-        >
-          <CloudDownload className={classes.icons} /> Download
-        </Button>
       </ListItem>
       <ListItem className={classes.listItem}>
         <Tooltip
