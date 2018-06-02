@@ -50,10 +50,9 @@ class HomePage extends React.Component {
               <GridItem xs={12} sm={12} md={6}>
                 <h1 className={classes.title}>Legal Services for your Budding Business</h1>
                 <h4>
-                  Every landing page needs a small description after the big
-                  bold title, that's why we added this text here. Add here all
-                  the information that can make you or your product create the
-                  first impression.
+                  Buddle helps you and your team navigate the complexities of cannabis
+                  industry by providing the tools, expertise, and up to date information required
+                  to operate your budding business.
                 </h4>
                 <br />
                 <Button
@@ -63,7 +62,7 @@ class HomePage extends React.Component {
                   href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                   target="_blank"
                   rel="noopener noreferrer"
-                > How Can We Help?
+                > Let's Get Started!
                 </Button>
               </GridItem>
             </GridContainer>
