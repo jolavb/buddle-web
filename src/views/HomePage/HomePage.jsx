@@ -22,7 +22,6 @@ import ProductSection from "./Sections/ProductSection.jsx";
 import TeamSection from "./Sections/TeamSection.jsx";
 import WorkSection from "./Sections/WorkSection.jsx";
 
-import { logOut } from "API/Authentication";
 
 
 
@@ -30,12 +29,6 @@ import { logOut } from "API/Authentication";
 const dashboardRoutes = [];
 
 class HomePage extends React.Component {
-
-  handleLogout = () => {
-    logOut()
-      .then(()=>{this.props.history.push('/login')})
-  }
-
 
   render() {
     const { classes, ...rest } = this.props;
@@ -45,7 +38,7 @@ class HomePage extends React.Component {
           color="transparent"
           routes={dashboardRoutes}
           brand={<img style={{height: 40}} src={buddleLogo} alt='Buddle' /> }
-          rightLinks={<HeaderLinks  handleLogout={this.handleLogout} />}
+          rightLinks={<HeaderLinks />}
           fixed
           changeColorOnScroll={{
             height: 400,
