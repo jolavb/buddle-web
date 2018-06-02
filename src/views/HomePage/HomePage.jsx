@@ -11,6 +11,7 @@ import Header from "components/Header/Header.jsx";
 import Footer from "components/Footer/Footer.jsx";
 import buddleLogo from "assets/img/buddle-logo.png";
 import Parallax from "components/Parallax/Parallax.jsx";
+import StateMap from "components/Maps/StateMap.jsx";
 
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
@@ -21,12 +22,21 @@ import ProductSection from "./Sections/ProductSection.jsx";
 import TeamSection from "./Sections/TeamSection.jsx";
 import WorkSection from "./Sections/WorkSection.jsx";
 
+import { logOut } from "API/Authentication";
+
+
 
 
 const dashboardRoutes = [];
 
-
 class HomePage extends React.Component {
+
+  handleLogout = () => {
+    logOut()
+      .then(()=>{this.props.history.push('/login')})
+  }
+
+
   render() {
     const { classes, ...rest } = this.props;
     return (
@@ -35,7 +45,7 @@ class HomePage extends React.Component {
           color="transparent"
           routes={dashboardRoutes}
           brand={<img style={{height: 40}} src={buddleLogo} alt='Buddle' /> }
-          rightLinks={<HeaderLinks />}
+          rightLinks={<HeaderLinks  handleLogout={this.handleLogout} />}
           fixed
           changeColorOnScroll={{
             height: 400,
@@ -71,9 +81,9 @@ class HomePage extends React.Component {
 
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>
-          <ProductSection
-
-           />
+          <ProductSection />
+          <StateMap />
+          <TeamSection />
           </div>
         </div>
 

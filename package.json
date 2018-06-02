@@ -1,9 +1,11 @@
 {
+  "homepage": "http://jolavb.github.io/buddle-web",
   "name": "material-kit-react",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@material-ui/icons": "1.0.0-beta.43",
+    "axios": "^0.18.0",
     "history": "4.7.2",
     "immutable": "^3.8.2",
     "lodash": "^4.17.10",
@@ -18,6 +20,7 @@
     "react-router-dom": "4.2.2",
     "react-scripts": "1.1.4",
     "react-select": "^1.2.1",
+    "react-simple-maps": "^0.12.1",
     "react-slick": "0.23.1",
     "react-swipeable-views": "0.12.13"
   },
@@ -28,6 +31,12 @@
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "gh-pages": "^1.1.0"
   }
 }
