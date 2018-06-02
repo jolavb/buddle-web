@@ -9,6 +9,7 @@ import "assets/scss/material-kit-react.css";
 
 var hist = createBrowserHistory();
 
+
 ReactDOM.render(
   <Router history={hist}>
     <Switch>

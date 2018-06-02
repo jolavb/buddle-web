@@ -8,6 +8,7 @@ import withStyles from "material-ui/styles/withStyles";
 import List from "material-ui/List";
 import ListItem from "material-ui/List/ListItem";
 import Tooltip from "material-ui/Tooltip";
+import { isLoggedIn } from "API/Authentication";
 
 // @material-ui/icons
 import { Apps, CloudDownload } from "@material-ui/icons";
@@ -19,8 +20,13 @@ import IconButton from "components/CustomButtons/IconButton.jsx";
 
 import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.jsx";
 
+
+
 function HeaderLinks({ ...props }) {
-  const { classes } = props;
+
+  const { classes, handleLogout } = props;
+  const showLogin = isLoggedIn()
+
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
@@ -45,6 +51,7 @@ function HeaderLinks({ ...props }) {
           ]}
         />
       </ListItem>
+      {/* Social Links
       <ListItem className={classes.listItem}>
         <Tooltip
           id="instagram-twitter"
@@ -96,6 +103,21 @@ function HeaderLinks({ ...props }) {
           </IconButton>
         </Tooltip>
       </ListItem>
+      */}
+      <ListItem className={classes.listItem}>
+      {
+        isLoggedIn() ? (
+            <Button
+            onClick={handleLogout}
+            size='sm'> Logout </Button>
+        ) : (
+            <Link to="/login">
+              <Button size='sm'> Login </Button>
+             </Link>
+        )
+      }
+      </ListItem>
+
     </List>
   );
 }
