@@ -22,7 +22,7 @@
     "react-select": "^1.2.1",
     "react-simple-maps": "^0.12.1",
     "react-slick": "0.23.1",
-    "react-swipeable-views": "0.12.13"
+    "react-swipeable-views": "^0.12.13"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",

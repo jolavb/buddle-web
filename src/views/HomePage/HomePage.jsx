@@ -3,6 +3,8 @@ import React from "react";
 import classNames from "classnames";
 // material-ui components
 import withStyles from "material-ui/styles/withStyles";
+import SwipeableViews from 'react-swipeable-views';
+
 
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import landingPageStyle from "assets/jss/material-kit-react/views/landingPage.jsx";
@@ -21,15 +23,35 @@ import Button from "components/CustomButtons/Button.jsx";
 import ProductSection from "./Sections/ProductSection.jsx";
 import TeamSection from "./Sections/TeamSection.jsx";
 import WorkSection from "./Sections/WorkSection.jsx";
+import ActionTable from "./Sections/ActionTable.jsx"
 
 
 const dashboardRoutes = [];
 
 class HomePage extends React.Component {
 
+  state = {
+    selectedFilter: null,
+    swipeIndex:0,
+    selectedState:null,
+  }
+
+  setSelected = (selectedFilter) => {
+    this.setState({selectedFilter})
+  }
+
+  handleClick = (state) => {
+    this.setState({selectedState: state.properties.NAME, swipeIndex: 1})
+  }
+
+  setSwipeIndex = (index) => {
+    this.setState({swipeIndex: index})
+  }
 
   render() {
     const { classes, ...rest } = this.props;
+    const {selectedFilter, swipeIndex, selectedState } = this.state;
+
     return (
       <div>
         <Header
@@ -50,10 +72,9 @@ class HomePage extends React.Component {
               <GridItem xs={12} sm={12} md={6}>
                 <h1 className={classes.title}>Legal Services for your Budding Business</h1>
                 <h4>
-                  Every landing page needs a small description after the big
-                  bold title, that's why we added this text here. Add here all
-                  the information that can make you or your product create the
-                  first impression.
+                  Buddle helps you and your team navigate the complexities of cannabis
+                  industry by providing the tools, expertise, and up to date information required
+                  to operate your budding business.
                 </h4>
                 <br />
                 <Button
@@ -63,7 +84,7 @@ class HomePage extends React.Component {
                   href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                   target="_blank"
                   rel="noopener noreferrer"
-                > How Can We Help?
+                > Let's Get Started!
                 </Button>
               </GridItem>
             </GridContainer>
@@ -73,7 +94,22 @@ class HomePage extends React.Component {
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>
           <ProductSection />
-          <StateMap />
+
+          <SwipeableViews
+          index={swipeIndex}
+          >
+              <StateMap
+                handleClick={this.handleClick}
+                setSelected={this.setSelected}
+                selectedFilter={selectedFilter}
+               />
+
+            <ActionTable
+              setSwipeIndex={this.setSwipeIndex}
+              selectedState={selectedState}
+             />
+
+           </SwipeableViews>
           <TeamSection />
           </div>
         </div>
