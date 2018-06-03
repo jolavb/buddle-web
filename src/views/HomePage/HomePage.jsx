@@ -24,14 +24,22 @@ import WorkSection from "./Sections/WorkSection.jsx";
 
 
 
-
-
 const dashboardRoutes = [];
 
 class HomePage extends React.Component {
 
+  state = {
+    selectedFilter: null,
+  }
+
+  setSelected = (selectedFilter) => {
+    this.setState({selectedFilter})
+  }
+
   render() {
     const { classes, ...rest } = this.props;
+    const {selectedFilter} = this.state;
+
     return (
       <div>
         <Header
@@ -75,7 +83,11 @@ class HomePage extends React.Component {
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>
           <ProductSection />
-          <StateMap />
+
+          <StateMap
+            setSelected={this.setSelected}
+            selectedFilter={selectedFilter}
+           />
           <TeamSection />
           </div>
         </div>
