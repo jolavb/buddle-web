@@ -37,7 +37,6 @@ class StateMap extends React.Component {
 
   handleGeoClick = (geo) => {
     const {handleClick} = this.props
-    console.log(geo)
     handleClick(geo)
   }
 
