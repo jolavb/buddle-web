@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from "react-select";
 
+
 import {
   ComposableMap,
   ZoomableGroup,
@@ -35,12 +36,13 @@ class StateMap extends React.Component {
 
 
   handleGeoClick = (geo) => {
-    console.log(geo.properties)
+    const {handleClick} = this.props
+    console.log(geo)
+    handleClick(geo)
   }
 
   getFilteredStyle = (geo) => {
     const { selectedFilter } = this.props;
-    console.log(selectedFilter)
     const state = geo.properties.STUSPS
 
     if (selectedFilter && selectedFilter.value.includes(state)) {
@@ -52,18 +54,11 @@ class StateMap extends React.Component {
 
   render(){
 
-    const {setSelected, selectedFilter} = this.props;
+    const {setSelected, selectedFilter, handleClick} = this.props;
+
 
     return (
       <div style={wrapperStyles}>
-      <Select
-      value={selectedFilter}
-      onChange={(selected)=> {setSelected(selected)}}
-      options= {[
-        {value:["CA", "CO"], label: "Legalized"},
-        {value:["NY", "CA", "ME", "RI"], label: "Medical Only"},
-      ]}
-      />
         <ComposableMap
           projectionConfig={{
           scale: 250,
@@ -76,7 +71,7 @@ class StateMap extends React.Component {
           }}
         >
           <ZoomableGroup disablePanning={true} zoom={5} center={[-95,35]}>
-          <Geographies disableOptimization geography={ usStatesJson }>
+          <Geographies geography={ usStatesJson }>
             {(geographies, projection) => geographies.map(geography =>
               <Geography
                 onClick={ ()=> {this.handleGeoClick(geography)} }

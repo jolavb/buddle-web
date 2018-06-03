@@ -3,6 +3,8 @@ import React from "react";
 import classNames from "classnames";
 // material-ui components
 import withStyles from "material-ui/styles/withStyles";
+import SwipeableViews from 'react-swipeable-views';
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
 import landingPageStyle from "assets/jss/material-kit-react/views/landingPage.jsx";
@@ -24,21 +26,28 @@ import WorkSection from "./Sections/WorkSection.jsx";
 
 
 
+
 const dashboardRoutes = [];
 
 class HomePage extends React.Component {
 
   state = {
     selectedFilter: null,
+    swipeIndex:0,
+    selectedState:null,
   }
 
   setSelected = (selectedFilter) => {
     this.setState({selectedFilter})
   }
 
+  handleClick = (state) => {
+    this.setState({selectedState: state.properties.NAME, swipeIndex: 1})
+  }
+
   render() {
     const { classes, ...rest } = this.props;
-    const {selectedFilter} = this.state;
+    const {selectedFilter, swipeIndex, selectedState } = this.state;
 
     return (
       <div>
@@ -84,10 +93,19 @@ class HomePage extends React.Component {
           <div className={classes.container}>
           <ProductSection />
 
-          <StateMap
-            setSelected={this.setSelected}
-            selectedFilter={selectedFilter}
-           />
+          <SwipeableViews
+          index={swipeIndex}
+          >
+              <StateMap
+                handleClick={this.handleClick}
+                setSelected={this.setSelected}
+                selectedFilter={selectedFilter}
+               />
+            <div style={Object.assign({})}>
+              <KeyboardArrowLeft onClick={()=> {this.setState({swipeIndex:0})}} style={{color:'black', fontSize:'35px'}} />
+              <h1 style={{color:'black', display:'inline'}}> {selectedState}</h1>
+            </div>
+           </SwipeableViews>
           <TeamSection />
           </div>
         </div>
