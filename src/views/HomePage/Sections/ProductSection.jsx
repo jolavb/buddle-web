@@ -24,11 +24,9 @@ class ProductSection extends React.Component {
           <GridItem xs={12} sm={12} md={8}>
             <h2 className={classes.title}>How Can we Help?</h2>
             <h5 className={classes.description}>
-              This is the paragraph where you can write more details about your
-              product. Keep you user engaged by providing meaningful
-              information. Remember that by this time, the user is curious,
-              otherwise he wouldn't scroll to get here. Add a button if you want
-              the user to see more.
+                The legal cannabis market in America is booming with over half of states
+                legalizing medical marijuana, and the industry bringing in about $9 billion in sales last year. Unfortunately, many cannabis start-ups and small businesses can't
+                afford the high cost of legal expenses from traditional firms. Enter Budddle.
             </h5>
           </GridItem>
         </GridContainer>

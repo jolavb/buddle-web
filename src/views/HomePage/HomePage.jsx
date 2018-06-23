@@ -3,12 +3,11 @@ import React from "react";
 import classNames from "classnames";
 // material-ui components
 import withStyles from "material-ui/styles/withStyles";
-import SwipeableViews from 'react-swipeable-views';
-
 
 import HeaderLinks from "components/Header/HeaderLinks.jsx";
-import landingPageStyle from "assets/jss/material-kit-react/views/landingPage.jsx";
+import homePageStyle from "assets/jss/material-kit-react/views/homePageStyle.jsx";
 
+//Components
 import Header from "components/Header/Header.jsx";
 import Footer from "components/Footer/Footer.jsx";
 import buddleLogo from "assets/img/buddle-logo.png";
@@ -21,6 +20,7 @@ import Button from "components/CustomButtons/Button.jsx";
 
 // Sections for this page
 import ProductSection from "./Sections/ProductSection.jsx";
+import GettingStarted from "./Sections/GettingStarted.jsx"
 import TeamSection from "./Sections/TeamSection.jsx";
 import WorkSection from "./Sections/WorkSection.jsx";
 import ActionTable from "./Sections/ActionTable.jsx"
@@ -30,28 +30,9 @@ const dashboardRoutes = [];
 
 class HomePage extends React.Component {
 
-  state = {
-    selectedFilter: null,
-    swipeIndex:0,
-    selectedState:null,
-  }
-
-  setSelected = (selectedFilter) => {
-    this.setState({selectedFilter})
-  }
-
-  handleClick = (state) => {
-    this.setState({selectedState: state.properties.NAME, swipeIndex: 1})
-  }
-
-  setSwipeIndex = (index) => {
-    this.setState({swipeIndex: index})
-  }
-
   render() {
     const { classes, ...rest } = this.props;
-    const {selectedFilter, swipeIndex, selectedState } = this.state;
-
+    
     return (
       <div>
         <Header
@@ -93,24 +74,9 @@ class HomePage extends React.Component {
 
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>
-          <ProductSection />
-
-          <SwipeableViews
-          index={swipeIndex}
-          >
-              <StateMap
-                handleClick={this.handleClick}
-                setSelected={this.setSelected}
-                selectedFilter={selectedFilter}
-               />
-
-            <ActionTable
-              setSwipeIndex={this.setSwipeIndex}
-              selectedState={selectedState}
-             />
-
-           </SwipeableViews>
-          <TeamSection />
+           <ProductSection />
+           <GettingStarted />
+           <TeamSection />
           </div>
         </div>
 
@@ -119,4 +85,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default withStyles(landingPageStyle)(HomePage)
+export default withStyles(homePageStyle)(HomePage)

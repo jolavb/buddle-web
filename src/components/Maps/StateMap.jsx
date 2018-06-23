@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from "react-select";
-
+import Button from "components/CustomButtons/Button";
 
 import {
   ComposableMap,
@@ -58,6 +58,12 @@ class StateMap extends React.Component {
 
     return (
       <div style={wrapperStyles}>
+        <Button
+        onClick={()=> {this.handleGeoClick('Hawaii')}}
+        >Hawaii</Button>
+        <Button
+        onClick={()=> {this.handleGeoClick('Alaska')}}
+        >Alaska</Button>
         <ComposableMap
           projectionConfig={{
           scale: 250,
@@ -68,33 +74,44 @@ class StateMap extends React.Component {
             width: "100%",
             height: "auto",
           }}
-        >
+         >
           <ZoomableGroup disablePanning={true} zoom={5} center={[-95,35]}>
-          <Geographies geography={ usStatesJson }>
-            {(geographies, projection) => geographies.map(geography =>
-              <Geography
-                onClick={ ()=> {this.handleGeoClick(geography)} }
-                key={ geography.properties.STATEFP }
-                geography={ geography.geometry }
-                projection={ projection }
-                style={{
-                  default: this.getFilteredStyle(geography),
-                  hover: {
-                    fill: "#0befa2",
-                    stroke: "#0befa2",
-                    strokeWidth: 0.5,
-                    outline: "none",
-                  },
-                  pressed: {
-                    fill: "#FF5722",
-                    stroke: "#607D8B",
-                    strokeWidth: 0.5,
-                    outline: "none",
-                  },
-                }}
-                />
-            )}
-          </Geographies>
+            <Geographies geography={ usStatesJson }>
+              {(geographies, projection) => geographies.map(geography => {
+                const state = geography.properties.NAME
+                if(state === 'Alaska' || state === 'Hawaii' ) {
+                  return null
+                }
+                return (
+                  <Geography
+                    onClick={ ()=> {this.handleGeoClick(state)} }
+                    key={ geography.properties.STATEFP }
+                    geography={ geography.geometry }
+                    projection={ projection }
+                    style={{
+                      default: this.getFilteredStyle(geography),
+                      hover: {
+                        fill: "#0befa2",
+                        stroke: "#0befa2",
+                        strokeWidth: 0.5,
+                        outline: "none",
+                      },
+                      pressed: {
+                        fill: "#FF5722",
+                        stroke: "#607D8B",
+                        strokeWidth: 0.5,
+                        outline: "none",
+                      },
+                    }}
+                    >
+                    {state}
+                    </Geography>
+                )
+              }
+              )}
+            </Geographies>
+            <Button>Hawaii</Button>
+            <Button>Alaska</Button>
           </ZoomableGroup>
         </ComposableMap>
       </div>
