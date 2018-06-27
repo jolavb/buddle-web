@@ -40,7 +40,8 @@ class HomePage extends React.Component {
   }
 
   handleClick = (state) => {
-    this.setState({selectedState: state.properties.NAME, swipeIndex: 1})
+    console.log(state)
+    this.setState({selectedState: state, swipeIndex: 1})
   }
 
   setSwipeIndex = (index) => {
@@ -112,8 +113,6 @@ class HomePage extends React.Component {
            </SwipeableViews>
           </div>
         </div>
-
-        <Footer />
 
       </div>
     )
