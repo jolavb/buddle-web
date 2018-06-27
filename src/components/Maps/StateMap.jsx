@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from "react-select";
+import stateLegality from "./stateLegality";
 
 
 import {
@@ -17,12 +18,20 @@ const wrapperStyles = {
   margin: "0 auto",
 }
 
-const filteredStyle = {
-  fill: "red",
+const recreationalStyle = {
+  fill: "green",
   stroke: "#607D8B",
   strokeWidth: 0.3,
   outline: "none",
 }
+
+const medicalStyle = {
+  fill: "blue",
+  stroke: "#607D8B",
+  strokeWidth: 0.3,
+  outline: "none",
+}
+
 
 const defaultStyle = {
   fill: "#02adc1",
@@ -44,10 +53,22 @@ class StateMap extends React.Component {
     const { selectedFilter } = this.props;
     const state = geo.properties.STUSPS
 
-    if (selectedFilter && selectedFilter.value.includes(state)) {
-      return filteredStyle
+    if (stateLegality.med.includes(state)){
+      return medicalStyle
+    } else if(stateLegality.rec.includes(state)){
+      return recreationalStyle
+    } else {
+      return defaultStyle
     }
-    return defaultStyle
+
+    
+    
+    // if (selectedFilter && selectedFilter.value.includes(state)) {
+    //   return legalStyle
+    // }
+
+
+    // return defaultStyle
   }
 
 

@@ -21,7 +21,6 @@ import Button from "components/CustomButtons/Button.jsx";
 
 // Sections for this page
 import ProductSection from "./Sections/ProductSection.jsx";
-import TeamSection from "./Sections/TeamSection.jsx";
 import WorkSection from "./Sections/WorkSection.jsx";
 import ActionTable from "./Sections/ActionTable.jsx"
 
@@ -54,18 +53,19 @@ class HomePage extends React.Component {
 
     return (
       <div>
-        <Header
-          color="transparent"
-          routes={dashboardRoutes}
-          brand={<img style={{height: 40}} src={buddleLogo} alt='Buddle' /> }
-          rightLinks={<HeaderLinks />}
-          fixed
-          changeColorOnScroll={{
-            height: 400,
-            color: "white"
-          }}
-          {...rest}
-        />
+
+      <Header
+            color="transparent"
+            brand={<img style={{height: 40}} src={buddleLogo} alt='Buddle' /> }
+            rightLinks={<HeaderLinks />}
+            fixed
+            changeColorOnScroll={{
+              height: 400,
+              color: "white"
+            }}
+            {...rest}
+          />
+
         <Parallax filter image={require("assets/img/background-team.jpg")}>
           <div className={classes.container}>
             <GridContainer>
@@ -110,9 +110,10 @@ class HomePage extends React.Component {
              />
 
            </SwipeableViews>
-          <TeamSection />
           </div>
         </div>
+
+        <Footer />
 
       </div>
     )
