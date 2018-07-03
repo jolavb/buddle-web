@@ -24,11 +24,11 @@ class ActionTable extends React.Component{
     contactCat:null,
   }
 
-  componentDidUpdate(prevProps){
+  componentDidUpdate(prevProps, nextProps){
     const {selectedState} = this.props
     const {abbr} = selectedState[0] || {};
 
-    if(prevProps.selectedState[0][abbr] !== abbr){
+    if(prevProps.selectedState[0]["abbr"] !== abbr){
         proPublica.fetchRepsByState(abbr)
           .then((r)=>{
             this.setState({reps: r.data.results})
@@ -40,7 +40,7 @@ class ActionTable extends React.Component{
     this.setState({dialogOpen: true, contactCat: service})
   }
 
-  
+
 
 
   renderReps(){
