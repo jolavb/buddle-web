@@ -24,6 +24,10 @@ import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
 import image from "assets/img/bg7.jpg";
 
+
+
+
+
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
@@ -51,117 +55,102 @@ class LoginPage extends React.Component {
           brand="Material Kit React"
           rightLinks={<HeaderLinks />}
           {...rest}
-        />
-        <div
-          className={classes.pageHeader}
-          style={{
-            backgroundImage: "url(" + image + ")",
-            backgroundSize: "cover",
-            backgroundPosition: "top center"
-          }}
-        >
-          <div className={classes.container}>
-            <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={4}>
-                <Card className={classes[this.state.cardAnimaton]}>
-                  <form className={classes.form}>
-                    <CardHeader color="primary" className={classes.cardHeader}>
-                      <h4>Login</h4>
-                      <div className={classes.socialLine}>
-                        <IconButton
-                          href="#pablo"
-                          target="_blank"
-                          color="transparent"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i
-                            className={classes.socialIcons + " fab fa-twitter"}
-                          />
-                        </IconButton>
-                        <IconButton
-                          href="#pablo"
-                          target="_blank"
-                          color="transparent"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i
-                            className={classes.socialIcons + " fab fa-facebook"}
-                          />
-                        </IconButton>
-                        <IconButton
-                          href="#pablo"
-                          target="_blank"
-                          color="transparent"
-                          onClick={e => e.preventDefault()}
-                        >
-                          <i
-                            className={
-                              classes.socialIcons + " fab fa-google-plus-g"
-                            }
-                          />
-                        </IconButton>
-                      </div>
-                    </CardHeader>
-                    <p className={classes.divider}>Or Be Classical</p>
-                    <CardBody>
-                      <CustomInput
-                        labelText="First Name..."
-                        id="first"
-                        formControlProps={{
-                          fullWidth: true
-                        }}
-                        inputProps={{
-                          type: "text",
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <People className={classes.inputIconsColor}/>
-                            </InputAdornment>
-                          )
-                        }}
-                      />
-                      <CustomInput
-                        labelText="Email..."
-                        id="email"
-                        formControlProps={{
-                          fullWidth: true
-                        }}
-                        inputProps={{
-                          type: "email",
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <Email className={classes.inputIconsColor}/>
-                            </InputAdornment>
-                          )
-                        }}
-                      />
-                      <CustomInput
-                        labelText="Password"
-                        id="pass"
-                        formControlProps={{
-                          fullWidth: true
-                        }}
-                        inputProps={{
-                          type: "password",
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <LockOutline className={classes.inputIconsColor}/>
-                            </InputAdornment>
-                          )
-                        }}
-                      />
-                    </CardBody>
-                    <CardFooter className={classes.cardFooter}>
-                      <Button simple color="primary" size="lg">
-                        Get started
-                      </Button>
-                    </CardFooter>
-                  </form>
-                </Card>
-              </GridItem>
-            </GridContainer>
-          </div>
-          <Footer whiteFont />
-        </div>
+         />
+         <div
+           className={classes.pageHeader}
+           style={{
+             backgroundImage: "url(" + image + ")",
+             backgroundSize: "cover",
+             backgroundPosition: "top center"
+           }}
+         >
+           <div className={classes.container}>
+             <GridContainer justify="center">
+               <GridItem xs={12} sm={12} md={4}>
+                 <Card className={classes[this.state.cardAnimaton]}>
+                   <form className={classes.form}>
+                     <CardHeader color="primary" className={classes.cardHeader}>
+                       <h4>Login</h4>
+                       <div className={classes.socialLine}>
+                         <IconButton
+                           href="#pablo"
+                           target="_blank"
+                           color="transparent"
+                           onClick={e => e.preventDefault()}
+                         >
+                           <i
+                             className={classes.socialIcons + " fab fa-twitter"}
+                           />
+                         </IconButton>
+                         <IconButton
+                           href="#pablo"
+                           target="_blank"
+                           color="transparent"
+                           onClick={e => e.preventDefault()}
+                         >
+                           <i
+                             className={classes.socialIcons + " fab fa-facebook"}
+                           />
+                         </IconButton>
+                         <IconButton
+                           href="#pablo"
+                           target="_blank"
+                           color="transparent"
+                           onClick={e => e.preventDefault()}
+                         >
+                           <i
+                             className={
+                               classes.socialIcons + " fab fa-google-plus-g"
+                             }
+                           />
+                         </IconButton>
+                       </div>
+                     </CardHeader>
+                     <p className={classes.divider}>Or Be Classical</p>
+                     <CardBody>
+                       <CustomInput
+                         labelText="Email..."
+                         id="email"
+                         formControlProps={{
+                           fullWidth: true
+                         }}
+                         inputProps={{
+                           type: "email",
+                           endAdornment: (
+                             <InputAdornment position="end">
+                               <Email className={classes.inputIconsColor}/>
+                             </InputAdornment>
+                           )
+                         }}
+                       />
+                       <CustomInput
+                         labelText="Password"
+                         id="pass"
+                         formControlProps={{
+                           fullWidth: true
+                         }}
+                         inputProps={{
+                           type: "password",
+                           endAdornment: (
+                             <InputAdornment position="end">
+                               <LockOutline className={classes.inputIconsColor}/>
+                             </InputAdornment>
+                           )
+                         }}
+                       />
+                     </CardBody>
+                     <CardFooter className={classes.cardFooter}>
+                       <Button simple color="primary" size="lg">
+                         Login
+                       </Button>
+                     </CardFooter>
+                   </form>
+                 </Card>
+               </GridItem>
+             </GridContainer>
+           </div>
+         </div>
+        <Footer whiteFont />
       </div>
     );
   }

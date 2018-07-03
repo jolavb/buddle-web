@@ -1,11 +1,17 @@
 import Components from "views/Components/Components.jsx";
 import LandingPage from "views/LandingPage/LandingPage.jsx";
 import ProfilePage from "views/ProfilePage/ProfilePage.jsx";
-import LoginPage from "views/LoginPage/LoginPage.jsx";
+import { Link, withRouter } from "react-router-dom";
+
+// My Components
+import Login from "views/Authentication/Login.jsx";
+import Registration from "views/Authentication/Registration.jsx";
+
 import HomePage from "views/HomePage/HomePage.jsx";
 import Incorporate from "views/Incorporate/Incorporate.jsx";
 import AboutPage  from "views/AboutPage/About.jsx";
-import Branding from "views/ServicesPages/Branding.jsx"
+import Branding from "views/ServicesPages/Branding.jsx";
+import AdminPage from "views/Admin/AdminPage";
 import { Route, Switch } from "react-router-dom";
 import React from "react";
 
@@ -25,21 +31,22 @@ import React from "react";
 
 
 class IndexRoutes extends React.Component{
-  
+
 
   render(){
     const { classes, ...rest} = this.props;
 
     return (
       <div>
-        
+        <Route path="/login" name="login" component={Login} />
         <Route path="/About" name="about" component={AboutPage} />
         <Route path="/Branding" name="services" component={Branding} />
+        <Route path="/Admin" name="admin" component={AdminPage} />
         <Route exact path="/" name="home" component={HomePage} />
         {/* <Route path="/Business-Formation" name="services" component={BusinessFormation} />
         <Route path="/License-Compliance" name="services" component={LicenseCompliance} /> */}
       </div>
-  
+
     )
 
   }

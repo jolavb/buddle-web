@@ -1,0 +1,6 @@
+.states :hover {
+    fill: #4caf4f;
+    stroke: #0befa2;
+    stroke-width: 1.5;
+    outline: none;
+  }

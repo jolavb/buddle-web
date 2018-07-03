@@ -9,8 +9,11 @@ import AboutPage  from "views/AboutPage/About.jsx";
 import IndexRoutes from "routes/index.jsx";
 
 import "assets/scss/material-kit-react.css";
+import "assets/scss/buddle-css.css";
+
 
 // var hist = createBrowserHistory();
+
 
 ReactDOM.render(
   <BrowserRouter>

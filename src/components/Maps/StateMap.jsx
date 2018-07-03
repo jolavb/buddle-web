@@ -1,6 +1,6 @@
 import React from 'react';
 import Select from "react-select";
-
+import _ from 'lodash';
 import stateLegality from "./stateLegality";
 
 import Button from "components/CustomButtons/Button"
@@ -52,9 +52,18 @@ class StateMap extends React.Component {
     handleClick(geo)
   }
 
-  getFilteredStyle = (geo) => {
-    const { selectedFilter } = this.props;
+  getFilteredStyle = (geo, states) => {
+
     const state = geo.properties.STUSPS
+
+    //
+    // const status  =  _.find(states,(s)=> {
+    //   console.log(s)
+    // })
+    //
+    // console.log(states)
+    //
+    // console.log(status)
 
     if (stateLegality.med.includes(state)){
       return medicalStyle
@@ -64,22 +73,12 @@ class StateMap extends React.Component {
       return defaultStyle
     }
 
-
-
-    // if (selectedFilter && selectedFilter.value.includes(state)) {
-    //   return legalStyle
-    // }
-
-
-    // return defaultStyle
   }
 
 
   render(){
 
-    const {setSelected, selectedFilter, handleClick} = this.props;
-
-
+    const {setSelected, selectedFilter, handleClick, states} = this.props;
     return (
       <div style={wrapperStyles}>
         <Button
@@ -108,12 +107,12 @@ class StateMap extends React.Component {
                 }
                 return (
                   <Geography
-                    onClick={ ()=> {this.handleGeoClick(state)} }
+                    onClick={ ()=> {this.handleGeoClick(geography.properties)} }
                     key={ geography.properties.STATEFP }
                     geography={ geography.geometry }
                     projection={ projection }
                     style={{
-                      default: this.getFilteredStyle(geography),
+                      default: this.getFilteredStyle(geography, states),
                       hover: {
                         fill: "#4caf4f",
                         stroke: "#0befa2",

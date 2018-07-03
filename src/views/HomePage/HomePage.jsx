@@ -14,6 +14,7 @@ import Footer from "components/Footer/Footer.jsx";
 import buddleLogo from "assets/img/buddle-logo.png";
 import Parallax from "components/Parallax/Parallax.jsx";
 import StateMap from "components/Maps/StateMap.jsx";
+import USMap from "components/Maps/USMap.jsx";
 
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
@@ -22,7 +23,12 @@ import Button from "components/CustomButtons/Button.jsx";
 // Sections for this page
 import ProductSection from "./Sections/ProductSection.jsx";
 import WorkSection from "./Sections/WorkSection.jsx";
-import ActionTable from "./Sections/ActionTable.jsx"
+import ActionTable from "./Sections/ActionTable.jsx";
+
+//api
+import {BuddleAPI} from "API/BuddleApi";
+
+
 
 
 const dashboardRoutes = [];
@@ -32,25 +38,37 @@ class HomePage extends React.Component {
   state = {
     selectedFilter: null,
     swipeIndex:0,
-    selectedState:null,
+    selectedState:[{name:"", abbr:"", desc:""}],
+    stateName:"",
+    stateAbbrev:"",
+    states: {},
   }
 
   setSelected = (selectedFilter) => {
     this.setState({selectedFilter})
   }
 
-  handleClick = (state) => {
-    console.log(state)
-    this.setState({selectedState: state, swipeIndex: 1})
+  handleClick = (selectedState) => {
+    this.setState({selectedState , swipeIndex: 1})
   }
 
   setSwipeIndex = (index) => {
     this.setState({swipeIndex: index})
   }
 
+  componentDidMount(){
+    console.log('mounted')
+    BuddleAPI.fetchStateInfo()
+      .then((r)=>{
+          this.setState({
+            states: r.data
+          })
+      })
+  }
+
   render() {
     const { classes, ...rest } = this.props;
-    const {selectedFilter, swipeIndex, selectedState } = this.state;
+    const {selectedFilter, swipeIndex, selectedState, states } = this.state;
 
     return (
       <div>
@@ -99,13 +117,15 @@ class HomePage extends React.Component {
           <SwipeableViews
           index={swipeIndex}
           >
-              <StateMap
+              <USMap
+                states={states}
                 handleClick={this.handleClick}
                 setSelected={this.setSelected}
                 selectedFilter={selectedFilter}
                />
 
             <ActionTable
+              states={states}
               setSwipeIndex={this.setSwipeIndex}
               selectedState={selectedState}
              />
